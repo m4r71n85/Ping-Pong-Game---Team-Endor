@@ -1,17 +1,15 @@
 public class Score {
-	private static int computerScore = 0;
-	private static int playerScore = 0;
+	private int score = 0;
 	
-	public static void increaseComputerScrore(){
-		computerScore+=1;
+	public int get(){
+		return score;
 	}
 	
-	public static void increasePlayerScrore(){
-		playerScore+=1;
+	public void increase(){
+		score+=1;
 	}
 	
-	public static void resetScore(){
-		playerScore = 0;
-		computerScore = 0;
+	public void reset(){
+		score = 0;
 	}
 }

@@ -6,6 +6,7 @@ public class Computer {
 	private GamePanel field; //Giving the AI access of the position of the ball
 	private int y = Pong.WINDOW_HEIGHT / 2;
 	private int yVelocity = 0;
+	private Score score = new Score();
 	
 	//Size of the board
 	private int width = 5;
@@ -56,5 +57,12 @@ public class Computer {
 		if(height <= 100){
 			height+=10;
 		}
+	}
+	public void scores(){
+		score.increase();
+		increaseHeight();
+	}
+	public int getScore(){
+		return score.get();
 	}
 }

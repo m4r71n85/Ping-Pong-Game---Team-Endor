@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Player {
 	private int y = Pong.WINDOW_HEIGHT / 2;
 	private int yVelocity = 0;
-	
+	private Score score = new Score();
 	//Size of the board
 	private int width = 5;
 	private int height = 40;
@@ -50,5 +50,12 @@ public class Player {
 		if(height <= 100){
 			height+=5;
 		}
+	}
+	public void scores(){
+		score.increase();
+		increaseHeight();
+	}
+	public int getScore(){
+		return score.get();
 	}
 }

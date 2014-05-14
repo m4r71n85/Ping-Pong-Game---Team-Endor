@@ -14,7 +14,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	Player player = new Player();
+	Score playerScore = new Score();
 	Ball ball = new Ball();
+	Score ballScore = new Score();
 	Computer computer = new Computer(this);
 	public GamePanel() {
 		//Updates on the console, then paints on it, and clear it
@@ -36,15 +38,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//Checking if ball hits the AI
 		ball.checkCollisionWith(computer);
 		if(ball.isBehindRightPanel()){
-			Score.increasePlayerScrore();
-			player.increaseHeight();
-			computer.decreaseHeight();
+			player.scores();
 			ball.resetPosition();
 		}
-		if(ball.isBehindLeftPanel()){
-			Score.increaseComputerScrore();
-			computer.increaseHeight();
-			player.decreaseHeight();
+		else if(ball.isBehindLeftPanel()){
+			computer.scores();
 			ball.resetPosition();
 		}
 	}
@@ -60,8 +58,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawLine(0, 30, Pong.WINDOW_WIDTH, 30);//Drawing the score line
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
-		g.drawString("Player: " + Score.playerScore,30,20);
-		g.drawString("Computer: " + Score.computerScore,240,20);
+		g.drawString("Player: " + player.getScore(),30,20);
+		g.drawString("Computer: " + computer.getScore(),240,20);
 	}
 	
 	public Ball getBall() {
