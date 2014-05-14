@@ -8,7 +8,7 @@ public class Player {
 	private Score score = new Score();
 	//Size of the board
 	private int width = 5;
-	private int height = 40;
+	private int height = 100;
 	
 	public Player() {
 	}
@@ -26,7 +26,16 @@ public class Player {
 	
 	//How fast the player moves
 	public void setYVelocity(int speed) {
-		yVelocity = speed;
+			if(y < 8){
+				y = 8;
+				yVelocity = 0;
+			}
+			else if (y > 250 - height){
+				y = 250 - height;
+				yVelocity = 0;
+			} else {
+				yVelocity = speed;
+			}
 	}
 	
 	public int getX() { //Position X
