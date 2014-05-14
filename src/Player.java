@@ -43,12 +43,12 @@ public class Player {
 	}
 	public void decreaseHeight(){
 		if(height >= 20){
-			height-=10;
+			height-=5;
 		}
 	}
 	public void increaseHeight(){
 		if(height <= 100){
-			height+=10;
+			height+=5;
 		}
 	}
 }
