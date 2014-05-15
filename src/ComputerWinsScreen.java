@@ -9,7 +9,7 @@ public class ComputerWinsScreen {
 		g.fillRect(0, 0, Pong.WINDOW_WIDTH, Pong.WINDOW_HEIGHT);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 60)); 
 		g.setColor(Color.WHITE);
-		g.drawString("Game Over",50,80);
+		g.drawString("Game Over!",50,80);
 		g.drawString("Computer wins!",10,180);
 	}
 }
