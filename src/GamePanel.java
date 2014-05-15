@@ -62,11 +62,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawLine(0, 30, Pong.WINDOW_WIDTH, 30);//Drawing the score line
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
-		g.drawString("Player: " + player.getScore(),30,20);
+		if (player.getScore() < 10 && computer.getScore() < 10) {
+			g.drawString("Player: " + player.getScore(),30,20);
+			g.drawString("Computer: " + computer.getScore(),240,20);
+		}
 		if (player.getScore() >= 10) {
 			playerWins.paint(g);
 		}
-		g.drawString("Computer: " + computer.getScore(),240,20);
 		if (computer.getScore() >= 10) {
 			computerWins.paint(g);
 		}
