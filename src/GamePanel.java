@@ -55,6 +55,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		computer.paint(g); //Painting the computer
 
 		g.setColor(Color.WHITE);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); //Font color
 		g.drawLine(0, 30, Pong.WINDOW_WIDTH, 30);//Drawing the score line
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
