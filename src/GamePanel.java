@@ -19,6 +19,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Ball ball = new Ball();
 	Score ballScore = new Score();
 	Computer computer = new Computer(this);
+	PlayerWinsScreen playerWins = new PlayerWinsScreen();
+	ComputerWinsScreen computerWins = new ComputerWinsScreen();
 	public GamePanel() {
 		//Updates on the console, then paints on it, and clear it
 		Timer tim = new Timer(50, this);
@@ -61,7 +63,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
 		g.drawString("Player: " + player.getScore(),30,20);
+		if (player.getScore() >= 10) {
+			playerWins.paint(g);
+		}
 		g.drawString("Computer: " + computer.getScore(),240,20);
+		if (computer.getScore() >= 10) {
+			computerWins.paint(g);
+		}
 	}
 	
 	public Ball getBall() {
