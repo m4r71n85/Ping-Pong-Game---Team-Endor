@@ -72,6 +72,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (computer.getScore() >= 10) {
 			computerWins.paint(g);
 		}
+		if (player.getScore() > 5 || computer.getScore() > 5) {
+			Ball.xVelocity = -6;
+			Ball.yVelocity = 6;
+		}
 	}
 	
 	public Ball getBall() {
@@ -87,11 +91,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) { //Up arrow (VK - virtual key)
 			//Moving board up
-			player.setYVelocity(-4);
+			if (player.y >= 10) {
+				player.setYVelocity(-4);					
+			}
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_DOWN) { //Down arrow
 			//Moving board down
-			player.setYVelocity(4);
+			if (player.y <= 210) {
+				player.setYVelocity(4);					
+			}
 		}
 	}
 	
