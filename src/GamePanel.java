@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player.scores();
 			ball.resetPosition();
 			ball.increaseSpeed();
+			computer.increaseSpeed();
 		}
 		else if(ball.isBehindLeftPanel()){
 			computer.scores();

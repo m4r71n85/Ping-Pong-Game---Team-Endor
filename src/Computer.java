@@ -20,7 +20,7 @@ public class Computer {
 	//Moving the AI
 	public void update() {
 		//Checking where the ball is
-		if (field.getBall().getY() < this.y) { 
+		if (field.getBall().getY() < this.y+(height/2)) { 
 			//Ball is above AI
 			yVelocity = -1*speed; //Speed of AI (Ball's velocity is 4, so if AI has 4, it will always catch the ball)
 			if(this.y < 0){
@@ -78,7 +78,9 @@ public class Computer {
 	}
 	
 	public void increaseSpeed(){
-		speed+=1;
+		if(speed<5){
+			speed+=1;
+		}
 	}
 	public void decreaseSpeed(){
 		speed+=1;
