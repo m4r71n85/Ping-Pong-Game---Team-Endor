@@ -60,6 +60,11 @@ public class Computer {
 			height-=10;
 		}
 	}
+	public void decreaseHeight(int x){
+		if(height >= 20){
+			height-=x;
+		}
+	}
 	public void increaseHeight(){
 		if(height <= 100){
 			height+=10;
@@ -74,6 +79,7 @@ public class Computer {
 	}
 
 	public void paintScore(int x, int y, Graphics g) {
+		g.setColor(Color.WHITE);
 		g.drawString("Computer: " + this.getScore(),x,y);
 	}
 	

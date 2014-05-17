@@ -50,6 +50,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			ball.resetPosition();
 			ball.increaseSpeed();
 		}
+		
+		for (Magic magic : player.getMagics()) {
+			if(magic.checkCollisionWith(computer)){
+				computer.decreaseHeight(15);
+			}
+			magic.update();
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -65,6 +72,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
 		
+		for (Magic magic : player.getMagics()) {
+			magic.paint(g);
+		}
 		
 		if (player.getScore() < 10 && computer.getScore() < 10) {
 			player.paintScore(30, 20, g);
@@ -98,6 +108,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			//Moving board down
 			if (player.getY() <= 210) {
 				player.setYVelocity(4);					
+			}
+		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			if(player.getMagicAmount()>0){
+				player.useMagic();
 			}
 		}
 	}

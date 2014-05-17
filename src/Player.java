@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Player {
@@ -9,10 +11,24 @@ public class Player {
 	//Size of the board
 	private int width = 5;
 	private int height = 40;
+	private int magicAmount = 3;
+	private List<Magic> magic = new ArrayList<Magic>();
+
 	
 	public Player() {
 	}
 	
+	public List<Magic> getMagics(){
+		return magic;
+	}
+	
+	public int getMagicAmount(){
+		return magicAmount;
+	}	
+	public void useMagic(){
+		magicAmount-=1;
+		magic.add(new Magic(5, y));
+	}
 	//Moving the player
 	public void update() {
 		y = y + yVelocity;
@@ -69,6 +85,7 @@ public class Player {
 	}
 
 	public void paintScore(int x, int y, Graphics g) {
+		g.setColor(Color.WHITE);
 		g.drawString("Player: " + this.getScore(),x,y);
 	}
 }
