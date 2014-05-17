@@ -68,9 +68,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (player.getScore() < 10 && computer.getScore() < 10) {
 			player.paintScore(30, 20, g);
 			computer.paintScore(240,20, g);
-		} else if (player.getScore() > 10) {
+		} else if (player.getScore() == 10) {
 			Screen.paintPlayerWin(g);
-		} else if (computer.getScore() > 10) {
+		} else if (computer.getScore() == 10) {
 			Screen.paintComputerWin(g);
 		}
 

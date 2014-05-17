@@ -87,7 +87,9 @@ public class Ball {
 	}
 
 	public void increaseSpeed() {
-		this.xVelocity-=1;
-		this.yVelocity+=1;
+		if(Math.abs(xVelocity) < 6){
+			xVelocity+=xVelocity>0?1:-1;
+			yVelocity+=yVelocity>0?1:-1;
+		}
 	}
 }
