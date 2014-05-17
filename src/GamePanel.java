@@ -19,8 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Ball ball = new Ball();
 	Score ballScore = new Score();
 	Computer computer = new Computer(this);
-	PlayerWinsScreen playerWins = new PlayerWinsScreen();
-	ComputerWinsScreen computerWins = new ComputerWinsScreen();
+	
 	public GamePanel() {
 		//Updates on the console, then paints on it, and clear it
 		Timer tim = new Timer(50, this);
@@ -43,10 +42,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(ball.isBehindRightPanel()){
 			player.scores();
 			ball.resetPosition();
+			ball.increaseSpeed();
 		}
 		else if(ball.isBehindLeftPanel()){
 			computer.scores();
 			ball.resetPosition();
+			ball.increaseSpeed();
 		}
 	}
 	
@@ -62,19 +63,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawLine(0, 30, Pong.WINDOW_WIDTH, 30);//Drawing the score line
 		g.drawLine(Pong.WINDOW_WIDTH / 2, 0, Pong.WINDOW_WIDTH / 2, Pong.WINDOW_HEIGHT); //Drawing dividing line
 		g.drawOval(Pong.WINDOW_WIDTH / 2 - 25, Pong.WINDOW_HEIGHT / 2 - 25, 50, 50); //Drawing the circle in the middle
+		
+		
 		if (player.getScore() < 10 && computer.getScore() < 10) {
-			g.drawString("Player: " + player.getScore(),30,20);
-			g.drawString("Computer: " + computer.getScore(),240,20);
+			player.paintScore(30, 20, g);
+			computer.paintScore(240,20, g);
+		} else if (player.getScore() > 10) {
+			Screen.paintPlayerWin(g);
+		} else if (computer.getScore() > 10) {
+			Screen.paintComputerWin(g);
 		}
-		if (player.getScore() >= 10) {
-			playerWins.paint(g);
-		}
-		if (computer.getScore() >= 10) {
-			computerWins.paint(g);
-		}
-		if (player.getScore() > 5 || computer.getScore() > 5) {
-			ball.increaseSpeed();
-		}
+
 	}
 	
 	public Ball getBall() {

@@ -11,6 +11,7 @@ public class Computer {
 	//Size of the board
 	private int width = 5;
 	private int height = 40;
+	private int speed = 3;
 	
 	public Computer(GamePanel game) {
 		this.field = game;
@@ -21,11 +22,11 @@ public class Computer {
 		//Checking where the ball is
 		if (field.getBall().getY() < this.y) { 
 			//Ball is above AI
-			yVelocity = -3; //Speed of AI (Ball's velocity is 4, so if AI has 4, it will always catch the ball)
+			yVelocity = -1*speed; //Speed of AI (Ball's velocity is 4, so if AI has 4, it will always catch the ball)
 		}
 		else if (field.getBall().getY() > this.y) {
 			//Ball is below AI
-			yVelocity = 3; //Speed of AI
+			yVelocity = speed; //Speed of AI
 		}
 		y = y + yVelocity;
 	}
@@ -64,5 +65,16 @@ public class Computer {
 	}
 	public int getScore(){
 		return score.get();
+	}
+
+	public void paintScore(int x, int y, Graphics g) {
+		g.drawString("Computer: " + this.getScore(),x,y);
+	}
+	
+	public void increaseSpeed(){
+		speed+=1;
+	}
+	public void decreaseSpeed(){
+		speed+=1;
 	}
 }

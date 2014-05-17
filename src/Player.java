@@ -67,4 +67,8 @@ public class Player {
 	public int getScore(){
 		return score.get();
 	}
+
+	public void paintScore(int x, int y, Graphics g) {
+		g.drawString("Player: " + this.getScore(),x,y);
+	}
 }
