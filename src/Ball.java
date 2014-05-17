@@ -85,4 +85,10 @@ public class Ball {
 	public int getY() {
 		return y;
 	}
+
+	public void increaseSpeed() {
+		this.xVelocity-=1;
+		this.yVelocity+=1;
+		
+	}
 }

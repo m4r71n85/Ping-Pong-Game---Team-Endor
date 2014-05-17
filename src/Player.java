@@ -8,7 +8,7 @@ public class Player {
 	private Score score = new Score();
 	//Size of the board
 	private int width = 5;
-	private int height = 100;
+	private int height = 40;
 	
 	public Player() {
 	}
